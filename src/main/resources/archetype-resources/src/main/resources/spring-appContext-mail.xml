@@ -1,0 +1,55 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+Configuration Spring pour l'envoi de mail.
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+    <bean id="mailPropertyConfigurer"
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:mail.properties" />
+        <property name="placeholderPrefix" value="${symbol_dollar}mail{" />
+    </bean>
+
+    <bean id="mailServicePropertyConfigurer"
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:mailService.properties" />
+        <property name="placeholderPrefix" value="${symbol_dollar}mailService{" />
+    </bean>
+    
+	<!-- Service Hornet Mail -->
+    <bean id="hornetMailService" class="hornet.framework.mail.MailServiceImpl">
+        <constructor-arg ref="mailSender" index="0" />
+        <constructor-arg value="${symbol_dollar}mailService{mail.application.name}" index="1" />
+        <constructor-arg value="${symbol_dollar}mailService{mail.messageid.domain}" index="2" />
+    </bean>
+    
+	<!-- Classe utilisée pour envoyer les mails -->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="${symbol_dollar}mail{mail.smtp.host}" />
+        <property name="username" value="${symbol_dollar}mail{mail.smtp.username}" />
+        <property name="password" value="${symbol_dollar}mail{mail.smtp.password}" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.debug">${symbol_dollar}mail{mail.debug}</prop>
+			</props>
+		</property>        
+    </bean>
+        
+	<!-- Service Mail Contact-->
+    <bean id="mailContactService" class="${package}.business.service.MailContactServiceImpl">
+        <constructor-arg ref="hornetMailService" index="0" />
+        <constructor-arg value="${symbol_dollar}mailService{mail.application.url}" index="1" />
+        <constructor-arg value="${symbol_dollar}mailService{mail.application.name}" index="2" />
+        <constructor-arg value="${symbol_dollar}mailService{mail.contact.object}" index="3" />
+        <constructor-arg value="${symbol_dollar}mailService{mail.contact.body}" index="4" />
+        <constructor-arg value="${symbol_dollar}mailService{mail.contact.to}" index="5" />
+    </bean>
+
+</beans>
