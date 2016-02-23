@@ -5,7 +5,7 @@
 
 	<groupId>fr.gouv.diplomatie.hornet</groupId>
 	<artifactId>hornet-service-archetype</artifactId>
-	<version>5.0.0</version>
+	<version>5.0.1-SNAPSHOT</version>
 	<packaging>maven-archetype</packaging>
 
 	<name>hornet-service-archetype</name>
@@ -25,6 +25,49 @@
 			</extension>
 		</extensions>
 
+		<!--Zip -->
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>truezip-maven-plugin</artifactId>
+				<executions>
+					<!-- # Zip des config -->
+					<execution>
+						<id>zip-config</id>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<phase>package</phase>
+						<configuration>
+							<fileset>
+								<directory>_parametrage/environnements/template</directory>
+								<outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}-config.zip</outputDirectory>
+								<includes>
+									<include>**/*</include>
+								</includes>
+							</fileset>
+						</configuration>
+					</execution>
+					<!-- # Zip des context -->
+					<execution>
+						<id>zip-context</id>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<phase>package</phase>
+						<configuration>
+							<fileset>
+								<directory>_parametrage/template</directory>
+								<outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}-context.zip</outputDirectory>
+								<includes>
+									<include>**/*</include>
+								</includes>
+							</fileset>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 		<pluginManagement>
 			<plugins>
 				<plugin>

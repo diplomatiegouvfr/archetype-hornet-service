@@ -167,6 +167,6 @@ $ mvn package
 
 ## Licence
 
-applitutoriel-service est sous [licence cecill 2.1](./LICENCE.md).
+applitutoriel-service est sous [licence cecill 2.1](./LICENSE.md).
 
-Site web : [![http://www.cecill.info](http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html)](http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html)
+Site web : [http://www.cecill.info](http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html)

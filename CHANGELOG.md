@@ -62,7 +62,7 @@
 - DEV_SER_SMV - En tant que Developpeur je peux utiliser Spring MVC pour développer l'applitutoriel-services
 - DEV_SER_SP4 - En tant que Developpeur je peux utiliser Spring 4 pour développer l'applitutoriel-services
 - DEV_TEM_TJA - En tant que Developpeur je peux Constuire une application Service basée sur Maven (Archetype)
-- DEV_TEM_TJS - En tant que Developpeur je peux Constuire une application Node JS basée sur yeoman (thème Intranet)
+- DEV_TEM_TJS - En tant que Developpeur je peux Constuire une application Node JS basée sur yeoman (thème default)
 - DEV_TEM_TTH - En tant que Developpeur je peux générer un projet sur un théme
 - EXP_APT_CONF - Je peux configurer l'appli tuto via un ou plusieurs fichier de conf externes à l'appliAfin
 - EXP_CLI_PCP - En tant que Exploitant je peux paramétrer le contextPath
