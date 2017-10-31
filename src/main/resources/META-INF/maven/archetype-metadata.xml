@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<archetype-descriptor xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd" name="applitutoriel-service"
+<archetype-descriptor xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd" name="archetype-hornet-service"
     xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <requiredProperties>
-    <requiredProperty key="versionHornet"/>
-  </requiredProperties>
   <fileSets>
     <fileSet filtered="true" packaged="true" encoding="UTF-8">
       <directory>src/main/java</directory>
@@ -78,26 +75,50 @@
         <include>**/*.sql</include>
       </includes>
     </fileSet>
+
+ 	<!-- # Developer configuration -->
     <fileSet filtered="true" encoding="UTF-8">
-      <directory>_parametrage/environnements</directory>
+      <directory>environment/develop</directory>
       <includes>
         <include>**/*.xml</include>
         <include>**/*.properties</include>
       </includes>
     </fileSet>
     <fileSet filtered="true" encoding="UTF-8">
-      <directory>_parametrage/template</directory>
+      <directory>environment/tc-server</directory>
       <includes>
         <include>**/*.xml</include>
       </includes>
     </fileSet>
     <fileSet encoding="UTF-8">
-      <directory>_parametrage/environnements</directory>
+      <directory>environment/develop</directory>
       <includes>
         <include>**/*.</include>
         <include>**/*.jks</include>
         <include>**/*.ks</include>
+        <include>**/*.txt</include>
       </includes>
     </fileSet>
+    <fileSet encoding="UTF-8">
+      <directory>environment/develop</directory>
+      <includes>
+        <include>**/*.pem</include>
+      </includes>
+    </fileSet>
+    <!-- # Depaut integration -->
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>environment/configuration</directory>
+      <includes>
+        <include>**/*.properties</include>
+      </includes>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>environment/templates</directory>
+      <includes>
+        <include>**/*.xml</include>
+        <include>**/*.properties</include>
+      </includes>
+    </fileSet>
+    
   </fileSets>
 </archetype-descriptor>

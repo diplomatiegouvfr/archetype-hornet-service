@@ -13,7 +13,13 @@ Configuration Spring pour la couche metier.
 
 	<!-- ========================= COUCHE BUSINESS ========================= -->
 
-    <bean id="utilisateurService"
-        class="${package}.business.service.UtilisateurServiceMock">
-    </bean>
+    
+	<bean id="utilisateurService" class="${package}.business.service.UtilisateurServiceImpl">
+		<constructor-arg ref="utilisateurDAO" index="0" />
+	</bean>
+	
+	<bean id="roleService" class="${package}.business.service.RoleServiceImpl">
+		<constructor-arg ref="roleDAO" index="0" />
+	</bean>
+	
 </beans>

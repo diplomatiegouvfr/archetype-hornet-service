@@ -12,13 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RestController;
 
 import ${package}.business.service.MailContactService;
 import ${package}.web.dto.contact.ContactEnvoyerDTOIn;
 
 /**
- * @author MAEDI
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  * @since 1.0 - 3 févr. 2015
  */
 @RestController
@@ -28,8 +27,7 @@ public class ContactController {
     @Resource
     private MailContactService mailContactService;
 
-    @RequestMapping(value = "/envoyer", consumes = MediaType.APPLICATION_JSON_VALUE,
-                method = RequestMethod.POST)
+    @RequestMapping(value = "/email", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
     public void envoyerMail(@RequestBody final ContactEnvoyerDTOIn mail) {
 

@@ -1,0 +1,7 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Context useHttpOnly="true">
+    <Environment name="conf/${artifactId}prop" value="${symbol_dollar}{param.dev.path}" type="java.lang.String" />
+</Context>

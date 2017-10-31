@@ -6,7 +6,7 @@ package ${package}.web.dto.contact;
 /**
  * Entité metier Mail.
  * 
- * @author MAEDI
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  */
 public class ContactEnvoyerDTOIn {
 

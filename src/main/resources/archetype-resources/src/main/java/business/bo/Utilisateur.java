@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * Entité metier Utilisateur.
  * 
- * @author MAEDI
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  */
 public class Utilisateur implements Serializable {
 
@@ -16,13 +16,10 @@ public class Utilisateur implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /** The uti id. */
-    private String utiId;
+    private Long utiId;
 
-    /** The nom. */
-    private String nom;
-
-    /** The prenom. */
-    private String prenom;
+    /** The login. */
+    private String login;
 
     /**
      * Instantiates a new utilisateur.
@@ -33,95 +30,67 @@ public class Utilisateur implements Serializable {
     }
 
     /**
-     * Instantiates a new utilisateur.
-     * 
-     * @param utiId
-     *            the uti id
-     * @param nom
-     *            the nom
-     * @param prenom
-     *            the prenom
+     * @param l
+     * @param string
      */
     public Utilisateur(
-                final String utiId, final String nom, final String prenom) {
+                final Long utiId, final String login) {
 
-        super();
         this.utiId = utiId;
-        this.nom = nom;
-        this.prenom = prenom;
+        this.login = login;
     }
 
     /**
      * Gets the uti id.
-     * 
+     *
      * @return Returns the utiId.
      */
-    public String getUtiId() {
+    public Long getUtiId() {
 
         return this.utiId;
     }
 
     /**
      * Sets the uti id.
-     * 
+     *
      * @param utiId
      *            The utiId to set.
      */
-    public void setUtiId(final String utiId) {
+    public void setUtiId(final Long utiId) {
 
         this.utiId = utiId;
     }
 
     /**
-     * Gets the nom.
-     * 
-     * @return Returns the nom.
+     * Gets the login.
+     *
+     * @return Returns the login.
      */
-    public String getNom() {
+    public String getLogin() {
 
-        return this.nom;
+        return this.login;
     }
 
     /**
-     * Sets the nom.
-     * 
-     * @param nom
-     *            The nom to set.
+     * Sets the login.
+     *
+     * @param login
+     *            The login to set.
      */
-    public void setNom(final String nom) {
+    public void setLogin(final String login) {
 
-        this.nom = nom;
+        this.login = login;
     }
 
-    /**
-     * Gets the prenom.
+    /*
+     * (non-Javadoc)
      * 
-     * @return Returns the prenom.
      */
-    public String getPrenom() {
+    @Override
+    public String toString() {
 
-        return this.prenom;
+        final StringBuilder builder = new StringBuilder();
+        builder.append("Utilisateur [utiId=").append(utiId).append(", login=").append(login).append("]");
+        return builder.toString();
     }
-
-    /**
-     * Sets the prenom.
-     * 
-     * @param prenom
-     *            The prenom to set.
-     */
-    public void setPrenom(final String prenom) {
-
-        this.prenom = prenom;
-    }
-
-    /**
-     * Retourne le nom complet d'un utilisateur (prénom + nom).
-     * 
-     * @return String
-     */
-    public String getNomComplet() {
-
-        return this.prenom + " " + this.nom;
-    }
-
 }

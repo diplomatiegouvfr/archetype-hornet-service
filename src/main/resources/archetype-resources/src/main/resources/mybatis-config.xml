@@ -11,5 +11,6 @@
 	</settings>
 	<mappers>
 		<mapper resource="${packageInPathFormat}/integration/dao/maps/Utilisateur_SqlMap.xml" />
+		<mapper resource="${packageInPathFormat}/integration/dao/maps/Role_SqlMap.xml" />
 	</mappers>
 </configuration>

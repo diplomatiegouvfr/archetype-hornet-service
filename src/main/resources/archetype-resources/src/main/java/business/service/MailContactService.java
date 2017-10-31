@@ -7,7 +7,7 @@ package ${package}.business.service;
  * Interface représentant les services disponibles pour les actions
  * concernant les mails.
  * 
- * @author MAEDI
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  */
 public interface MailContactService {
 

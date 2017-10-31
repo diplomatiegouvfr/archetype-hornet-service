@@ -5,11 +5,16 @@
 
 	<groupId>fr.gouv.diplomatie.hornet</groupId>
 	<artifactId>hornet-service-archetype</artifactId>
-	<version>5.0.1-SNAPSHOT</version>
+	<version>5.1.0</version>
 	<packaging>maven-archetype</packaging>
 
 	<name>hornet-service-archetype</name>
 
+	<inceptionYear>2017</inceptionYear>
+	<organization>
+		<name>MEAE - Ministère de l'Europe et des Affaires étrangères</name>
+	</organization>
+	
 	<!-- Properties -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,59 +26,48 @@
 			<extension>
 				<groupId>org.apache.maven.archetype</groupId>
 				<artifactId>archetype-packaging</artifactId>
-				<version>2.2</version>
+				<version>3.0.0</version>
 			</extension>
 		</extensions>
-
 		<!--Zip -->
 		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>truezip-maven-plugin</artifactId>
-				<executions>
-					<!-- # Zip des config -->
-					<execution>
-						<id>zip-config</id>
-						<goals>
-							<goal>copy</goal>
-						</goals>
-						<phase>package</phase>
-						<configuration>
-							<fileset>
-								<directory>_parametrage/environnements/template</directory>
-								<outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}-config.zip</outputDirectory>
-								<includes>
-									<include>**/*</include>
-								</includes>
-							</fileset>
-						</configuration>
-					</execution>
-					<!-- # Zip des context -->
-					<execution>
-						<id>zip-context</id>
-						<goals>
-							<goal>copy</goal>
-						</goals>
-						<phase>package</phase>
-						<configuration>
-							<fileset>
-								<directory>_parametrage/template</directory>
-								<outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}-context.zip</outputDirectory>
-								<includes>
-									<include>**/*</include>
-								</includes>
-							</fileset>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <executions>
+                  <execution>
+                    <id>enforce-versions</id>
+                    <goals>
+                      <goal>enforce</goal>
+                    </goals>
+                    <configuration>
+                      <rules>
+                        <requireMavenVersion>
+                          <version>[3.2.5,3.4)</version>
+                        </requireMavenVersion>
+                        <requireJavaVersion>
+                          <version>1.8</version>
+                        </requireJavaVersion>
+                      </rules>
+                    </configuration>
+                  </execution>
+                </executions>
+            </plugin>
 		</plugins>
+
 		<pluginManagement>
 			<plugins>
-				<plugin>
-					<artifactId>maven-archetype-plugin</artifactId>
-					<version>2.2</version>
-				</plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-archetype-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>1.4.1</version>
+                </plugin>
 			</plugins>
 		</pluginManagement>
 	</build>

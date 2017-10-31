@@ -9,19 +9,18 @@ import ${package}.integration.dao.UtilisateurDAO;
 /**
  * UtilisateurServiceImpl
  * 
- * @author MAEDI
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  */
 public class UtilisateurServiceImpl implements UtilisateurService {
 
-    /**
+	/**
      * <code>utilisateurDAO</code> the utilisateurDAO
      */
-    @SuppressWarnings("unused")
     private final transient UtilisateurDAO utilisateurDAO;
 
     /**
      * Constructeur par défaut
-     * 
+     *
      */
     public UtilisateurServiceImpl() {
 
@@ -31,7 +30,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
     /**
      * Constructeur
-     * 
+     *
      * @param utilisateurDAO
      *            UtilisateurDAO
      */
@@ -51,8 +50,20 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
     /** {@inheritDoc} */
     @Override
-    public Utilisateur lireUtilisateur(final String utiId) {
+    public Utilisateur lireUtilisateur(final String login) {
 
-        return null;
+        return utilisateurDAO.selectByLogin(login);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * java.lang.String)
+     */
+    @Override
+    public Utilisateur lireUtilisateur(final String login, final String password) {
+
+        return utilisateurDAO.selectByLoginPassword(login, password);
     }
 }

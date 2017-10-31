@@ -9,7 +9,7 @@ import hornet.framework.webservice.WsCallerHelper;
 /**
  * Classe WebServiceFactory.
  * 
- * @author MAEDI
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  */
 public class WebServiceFactory {
 

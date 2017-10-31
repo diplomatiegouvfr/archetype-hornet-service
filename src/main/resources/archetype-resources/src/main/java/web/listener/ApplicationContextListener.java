@@ -8,7 +8,7 @@ import hornet.framework.web.listener.HornetContextListener;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author MAEDI
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  * @since 1.0 - 28 juil. 2014
  */
 public final class ApplicationContextListener extends HornetContextListener {
@@ -17,7 +17,7 @@ public final class ApplicationContextListener extends HornetContextListener {
     protected void initContextActions() {
 
         // Pas d'actions spécifiques
-        LoggerFactory.getLogger(this.getClass()).info("Pas d'action spécifique");
+        LoggerFactory.getLogger(this.getClass()).debug("Pas d'action spécifique");
 
     }
 
@@ -25,14 +25,14 @@ public final class ApplicationContextListener extends HornetContextListener {
     protected void destroyContextActions() {
 
         // Pas d'actions spécifiques
-        LoggerFactory.getLogger(this.getClass()).info("Pas d'action spécifique");
+        LoggerFactory.getLogger(this.getClass()).debug("Pas d'action spécifique");
 
     }
 
     @Override
     protected String getContext() {
 
-        return "applituto";
+        return "${artifactId}";
     }
 
 }

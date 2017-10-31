@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Implementation pour l'envoi d'un mail de contact.
  *
- * @author MAEDI
+ * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  */
 public class MailContactServiceImpl implements MailContactService {
 

@@ -9,7 +9,11 @@ Il s'agit d'un [archétype maven](https://maven.apache.org/archetype/index.html)
 Exécuter la commande Maven suivante pour démarrer l'initialisation d'un nouveau projet basé sur Hornet Service :
 
 ```shell
-$ mvn archetype:generate -DarchetypeCatalog=PROTOCOL://HOST_REPOSITORY/repository-mvn/archetype-catalog.xml -DarchetypeGroupId=fr.gouv.diplomatie.hornet -DarchetypeArtifactId=hornet-service-archetype -DarchetypeVersion=${hornetservicesversion}
+$ mvn org.apache.maven.plugins:maven-archetype-plugin:3.0.0:generate -DarchetypeGroupId=fr.gouv.diplomatie.hornet -DarchetypeArtifactId=hornet-service-archetype -DarchetypeVersion=${hornetservicesversion}
+```
+ou suivant votre configuration maven 
+```shell
+$ mvn org.apache.maven.plugins:maven-archetype-plugin:3.0.0:generate -DarchetypeCatalog=PROTOCOL://HOST_REPOSITORY/repository-mvn/archetype-catalog.xml -DarchetypeGroupId=fr.gouv.diplomatie.hornet -DarchetypeArtifactId=hornet-service-archetype -DarchetypeVersion=${hornetservicesversion}
 ```
 
 Le générateur va vous demander plusieurs informations nécessaires à l'initialisation de votre projet Hornet Service :
@@ -25,135 +29,132 @@ __Résultat__ :
 Le générateur produit l'arborescence projet de base suivante, exposant un seul service REST d'envoi de mail :
 
 ```
-│   pom.xml
-│
-├───src
-│   ├───main
-│   │   ├───java
-│   │   │   └───fr
-│   │   │       └───gouv
-│   │   │           └───diplomatie
-│   │   │               └───app
-│   │   │                   ├───business
-│   │   │                   │   ├───bo
-│   │   │                   │   │       Role.java
-│   │   │                   │   │       Utilisateur.java
-│   │   │                   │   │
-│   │   │                   │   └───service
-│   │   │                   │           MailContactService.java
-│   │   │                   │           MailContactServiceImpl.java
-│   │   │                   │           UtilisateurService.java
-│   │   │                   │           UtilisateurServiceImpl.java
-│   │   │                   │           UtilisateurServiceMock.java
-│   │   │                   │
-│   │   │                   ├───integration
-│   │   │                   │   └───dao
-│   │   │                   │           UtilisateurDAO.java
-│   │   │                   │
-│   │   │                   ├───web
-│   │   │                   │   ├───conf
-│   │   │                   │   │       WebConfig.java
-│   │   │                   │   │
-│   │   │                   │   ├───controller
-│   │   │                   │   │       ContactController.java
-│   │   │                   │   │
-│   │   │                   │   ├───dto
-│   │   │                   │   │   └───contact
-│   │   │                   │   │           ContactEnvoyerDTOIn.java
-│   │   │                   │   │
-│   │   │                   │   ├───filter
-│   │   │                   │   │       SimpleCORSFilter.java
-│   │   │                   │   │
-│   │   │                   │   └───listener
-│   │   │                   │           ApplicationContextListener.java
-│   │   │                   │           ApplicationSessionListener.java
-│   │   │                   │
-│   │   │                   └───ws
-│   │   │                       ├───factory
-│   │   │                       │       WebServiceFactory.java
-│   │   │                       │
-│   │   │                       └───hello
-│   │   │                               HelloService.java
-│   │   │                               IHelloService.java
-│   │   │                               ObjectFactory.java
-│   │   │                               package-info.java
-│   │   │                               Say.java
-│   │   │                               SayResponse.java
-│   │   │
-│   │   ├───resources
-│   │   │   │   createTables.sql
-│   │   │   │   ehcache.xsd
-│   │   │   │   initData.sql
-│   │   │   │   mybatis-config.xml
-│   │   │   │   spring-appContext-common-dao.xml
-│   │   │   │   spring-appContext-common-datasource.xml
-│   │   │   │   spring-appContext-common-service.xml
-│   │   │   │   spring-appContext-common.xml
-│   │   │   │   spring-appContext-mail.xml
-│   │   │   │   spring-appContext-web.xml
-│   │   │   │
-│   │   │   └───fr
-│   │   │       └───gouv
-│   │   │           └───diplomatie
-│   │   │               └───app
-│   │   │                   ├───business
-│   │   │                   │   │   messages_fr.properties
-│   │   │                   │   │
-│   │   │                   │   └───service
-│   │   │                   │           ModeleMailContact.vm
-│   │   │                   │
-│   │   │                   └───integration
-│   │   │                       └───dao
-│   │   │                           └───maps
-│   │   │                                   Utilisateur_SqlMap.xml
-│   │   │
-│   │   └───webapp
-│   │       ├───META-INF
-│   │       │       MANIFEST.MF
-│   │       │
-│   │       └───WEB-INF
-│   │               services-rest-servlet.xml
-│   │               web.xml
-│   │
-│   └───test
-│       ├───java
-│       │   └───fr
-│       │       └───gouv
-│       │           └───diplomatie
-│       │               └───app
-│       └───resources
-└───_parametrage
-    ├───environnements
-    │   ├───dev
-    │   │   │   ehcache.xml
-    │   │   │   jdbc.properties
-    │   │   │   logback-hornet.xml
-    │   │   │   mail.properties
-    │   │   │   mailService.properties
-    │   │   │   webservices.properties
-    │   │   │
-    │   │   └───keystore
-    │   │           client.ks
-    │   │           client_truststore.jks
-    │   │           serveur.ks
-    │   │           serveur_truststore.jks
-    │   │
-    │   └───template
-    │       │   ehcache.xml
-    │       │   jdbc.properties
-    │       │   logback-hornet.xml
-    │       │   mail.properties
-    │       │   mailService.properties
-    │       │   webservices.properties
-    │       │
-    │       └───keystore
-    │               client.ks
-    │               client_truststore.jks
-    │               serveur.ks
-    │               serveur_truststore.jks
-    │
-    └───template
-            context.xml
+.
+├── environment
+│   ├── configuration
+│   │   └── DEV.properties
+│   ├── develop
+│   │   ├── ehcache.xml
+│   │   ├── jdbc.properties
+│   │   ├── keys
+│   │   │   ├── private8.txt
+│   │   │   ├── private.txt
+│   │   │   └── public.txt
+│   │   ├── keystore
+│   │   │   ├── client.ks
+│   │   │   ├── client_truststore.jks
+│   │   │   ├── serveur.ks
+│   │   │   └── serveur_truststore.jks
+│   │   ├── logback-hornet.xml
+│   │   ├── mail.properties
+│   │   ├── mailService.properties
+│   │   ├── token.properties
+│   │   └── webservices.properties
+│   ├── tc-server
+│   │   └── context.xml
+│   └── templates
+│       ├── ehcache.xml
+│       ├── jdbc.properties
+│       ├── logback-hornet.xml
+│       ├── mail.properties
+│       ├── mailService.properties
+│       ├── token.properties
+│       └── webservices.properties
+├── pom.xml
+└── src
+    ├── main
+    │   ├── java
+    │   │   ├── business
+    │   │   │   ├── bo
+    │   │   │   │   ├── Role.java
+    │   │   │   │   └── Utilisateur.java
+    │   │   │   └── service
+    │   │   │       ├── MailContactServiceImpl.java
+    │   │   │       ├── MailContactService.java
+    │   │   │       ├── RoleServiceImpl.java
+    │   │   │       ├── RoleService.java
+    │   │   │       ├── UtilisateurServiceImpl.java
+    │   │   │       └── UtilisateurService.java
+    │   │   ├── export
+    │   │   │   └── service
+    │   │   │       ├── UtilisateurExportService.java
+    │   │   │       └── UtilisateurPdfExportService.java
+    │   │   ├── integration
+    │   │   │   └── dao
+    │   │   │       ├── RoleDAO.java
+    │   │   │       └── UtilisateurDAO.java
+    │   │   ├── web
+    │   │   │   ├── conf
+    │   │   │   │   └── WebConfig.java
+    │   │   │   ├── controller
+    │   │   │   │   ├── ContactController.java
+    │   │   │   │   └── UtilisateurController.java
+    │   │   │   ├── dto
+    │   │   │   │   ├── contact
+    │   │   │   │   │   └── ContactEnvoyerDTOIn.java
+    │   │   │   │   └── utilisateur
+    │   │   │   │       ├── AuthDTOIn.java
+    │   │   │   │       └── UtilisateurRolesDTO.java
+    │   │   │   ├── filter
+    │   │   │   │   └── SimpleCORSFilter.java
+    │   │   │   ├── interceptors
+    │   │   │   │   └── UserRequestingInterceptor.java
+    │   │   │   ├── listener
+    │   │   │   │   └── ApplicationContextListener.java
+    │   │   │   └── security
+    │   │   │       ├── exceptions
+    │   │   │       │   └── JwtAuthenticationException.java
+    │   │   │       ├── JwtAuthenticationProvider.java
+    │   │   │       ├── JwtService.java
+    │   │   │       ├── KeyProvider.java
+    │   │   │       ├── profile
+    │   │   │       │   ├── JwtAuthenticatedProfile.java
+    │   │   │       │   ├── Role.java
+    │   │   │       │   └── User.java
+    │   │   │       └── WebSecurityConfig.java
+    │   │   └── ws
+    │   │       ├── factory
+    │   │       │   └── WebServiceFactory.java
+    │   │       └── hello
+    │   │           ├── HelloService.java
+    │   │           ├── IHelloService.java
+    │   │           ├── ObjectFactory.java
+    │   │           ├── package-info.java
+    │   │           ├── Say.java
+    │   │           └── SayResponse.java
+    │   ├── resources
+    │   │   ├── createTables.sql
+    │   │   ├── ehcache.xsd
+    │   │   ├── initData.sql
+    │   │   ├── mybatis-config.xml
+    │   │   ├── spring-appContext-aopMetrologie.xml
+    │   │   ├── spring-appContext-common-dao.xml
+    │   │   ├── spring-appContext-common-datasource.xml
+    │   │   ├── spring-appContext-common-service.xml
+    │   │   ├── spring-appContext-common.xml
+    │   │   ├── spring-appContext-mail.xml
+    │   │   ├── spring-appContext-web.xml
+    │   │   └── test
+    │   │       ├── business
+    │   │       │   ├── messages_fr.properties
+    │   │       │   └── service
+    │   │       │       └── ModeleMailContact.vm
+    │   │       └── integration
+    │   │           └── dao
+    │   │               └── maps
+    │   │                   ├── Role_SqlMap.xml
+    │   │                   └── Utilisateur_SqlMap.xml
+    │   └── webapp
+    │       ├── META-INF
+    │       │   └── MANIFEST.MF
+    │       └── WEB-INF
+    │           ├── services-rest-servlet.xml
+    │           └── web.xml
+    └── test
+        ├── java
+        │   └── test
+        └── resources
+
 
 ```
 
@@ -167,6 +168,6 @@ $ mvn package
 
 ## Licence
 
-applitutoriel-service est sous [licence cecill 2.1](./LICENSE.md).
+`archetype-hornet-service` est sous [licence cecill 2.1](./LICENSE.md).
 
 Site web : [http://www.cecill.info](http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html)
