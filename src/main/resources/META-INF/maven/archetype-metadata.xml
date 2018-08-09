@@ -1,124 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<archetype-descriptor xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd" name="archetype-hornet-service"
-    xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <fileSets>
-    <fileSet filtered="true" packaged="true" encoding="UTF-8">
-      <directory>src/main/java</directory>
-      <includes>
-        <include>**/*.java</include>
-      </includes>
-    </fileSet>
-    <!-- ressources filtrées et "packagées" -->
-    <fileSet filtered="true" packaged="true" encoding="UTF-8">
-      <directory>src/main/resources</directory>
-      <includes>
-        <include>business/**/*.xml</include>
-        <include>business/**/*.vm</include>
-        <include>business/**/*.properties</include>
-        <include>business/**/*.sql</include>
-        <include>integration/**/*.xml</include>
-        <include>integration/**/*.vm</include>
-        <include>integration/**/*.properties</include>
-        <include>integration/**/*.sql</include>
-      </includes>
-    </fileSet>
-    <!-- ressources filtrées et non "packagées" -->
-    <fileSet filtered="true" encoding="UTF-8">
-      <directory>src/main/resources</directory>
-      <includes>
-        <include>*.xml</include>
-        <include>*.vm</include>
-        <include>*.properties</include>
-        <include>*.sql</include>
-      </includes>
-    </fileSet>
-    <!-- ressources non filtrées et non "packagées" -->
-    <fileSet encoding="UTF-8">
-      <directory>src/main/resources</directory>
-      <includes>
-        <include>*.wsdl</include>
-        <include>*.jrxml</include>
-        <include>*.xsd</include>
-        <include>*.jasper</include>
-      </includes>
-    </fileSet>
-    
-    <fileSet filtered="true" encoding="UTF-8">
-      <directory>src/main/webapp</directory>
-      <includes>
-        <include>**/*.jsp</include>
-        <include>**/*.xml</include>
-      </includes>
-    </fileSet>
-    <fileSet encoding="UTF-8">
-      <directory>src/main/webapp</directory>
-      <includes>
-        <include>**/*.MF</include>
-      </includes>
-    </fileSet>
-    <fileSet filtered="true" packaged="true" encoding="UTF-8">
-      <directory>src/test/java</directory>
-      <includes>
-        <include>**/*.java</include>
-      </includes>
-    </fileSet>
-    <fileSet filtered="true" encoding="UTF-8">
-      <directory>src/test/resources</directory>
-      <includes>
-        <include>**/*.xml</include>
-      </includes>
-    </fileSet>
-    <fileSet encoding="UTF-8">
-      <directory>src/test/resources</directory>
-      <includes>
-        <include>**/*.sql</include>
-      </includes>
-    </fileSet>
+<archetype-descriptor
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
+	name="archetype-hornet-service"
+	xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<fileSets>
+		<fileSet filtered="true" packaged="true" encoding="UTF-8">
+			<directory>src/main/java</directory>
+			<includes>
+				<include>**/*.java</include>
+			</includes>
+		</fileSet>
+		<!-- ressources filtrées et "packagées" -->
+		<fileSet filtered="true" packaged="true" encoding="UTF-8">
+			<directory>src/main/resources</directory>
+			<includes>
+				<include>business/**/*.xml</include>
+				<include>business/**/*.vm</include>
+				<include>business/**/*.properties</include>
+				<include>business/**/*.sql</include>
+				<include>integration/**/*.xml</include>
+				<include>integration/**/*.vm</include>
+				<include>integration/**/*.properties</include>
+				<include>integration/**/*.sql</include>
+			</includes>
+		</fileSet>
+		<!-- ressources filtrées et non "packagées" -->
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory>src/main/resources</directory>
+			<includes>
+				<include>*.xml</include>
+				<include>*.vm</include>
+				<include>*.properties</include>
+				<include>*.sql</include>
+			</includes>
+		</fileSet>
+		<!-- ressources non filtrées et non "packagées" -->
+		<fileSet encoding="UTF-8">
+			<directory>src/main/resources</directory>
+			<includes>
+				<include>*.wsdl</include>
+				<include>*.jrxml</include>
+				<include>*.xsd</include>
+				<include>*.jasper</include>
+			</includes>
+		</fileSet>
 
- 	<!-- # Developer configuration -->
-    <fileSet filtered="true" encoding="UTF-8">
-      <directory>environment/develop</directory>
-      <includes>
-        <include>**/*.xml</include>
-        <include>**/*.properties</include>
-      </includes>
-    </fileSet>
-    <fileSet filtered="true" encoding="UTF-8">
-      <directory>environment/tc-server</directory>
-      <includes>
-        <include>**/*.xml</include>
-      </includes>
-    </fileSet>
-    <fileSet encoding="UTF-8">
-      <directory>environment/develop</directory>
-      <includes>
-        <include>**/*.</include>
-        <include>**/*.jks</include>
-        <include>**/*.ks</include>
-        <include>**/*.txt</include>
-      </includes>
-    </fileSet>
-    <fileSet encoding="UTF-8">
-      <directory>environment/develop</directory>
-      <includes>
-        <include>**/*.pem</include>
-      </includes>
-    </fileSet>
-    <!-- # Depaut integration -->
-    <fileSet filtered="true" encoding="UTF-8">
-      <directory>environment/configuration</directory>
-      <includes>
-        <include>**/*.properties</include>
-      </includes>
-    </fileSet>
-    <fileSet filtered="true" encoding="UTF-8">
-      <directory>environment/templates</directory>
-      <includes>
-        <include>**/*.xml</include>
-        <include>**/*.properties</include>
-      </includes>
-    </fileSet>
-    
-  </fileSets>
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory>src/main/webapp</directory>
+			<includes>
+				<include>**/*.jsp</include>
+				<include>**/*.xml</include>
+			</includes>
+		</fileSet>
+		<fileSet encoding="UTF-8">
+			<directory>src/main/webapp</directory>
+			<includes>
+				<include>**/*.MF</include>
+			</includes>
+		</fileSet>
+		<fileSet filtered="true" packaged="true" encoding="UTF-8">
+			<directory>src/test/java</directory>
+			<includes>
+				<include>**/*.java</include>
+			</includes>
+		</fileSet>
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory>src/test/resources</directory>
+			<includes>
+				<include>**/*.xml</include>
+			</includes>
+		</fileSet>
+		<fileSet encoding="UTF-8">
+			<directory>src/test/resources</directory>
+			<includes>
+				<include>**/*.sql</include>
+			</includes>
+		</fileSet>
+
+		<!-- # Developer configuration -->
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory>environment/develop</directory>
+			<includes>
+				<include>**/*.xml</include>
+				<include>**/*.properties</include>
+			</includes>
+		</fileSet>
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory>environment/tc-server</directory>
+			<includes>
+				<include>**/*.xml</include>
+			</includes>
+		</fileSet>
+		<fileSet encoding="UTF-8">
+			<directory>environment/develop</directory>
+			<includes>
+				<include>**/*.</include>
+				<include>**/*.jks</include>
+				<include>**/*.ks</include>
+				<include>**/*.txt</include>
+			</includes>
+		</fileSet>
+		<fileSet encoding="UTF-8">
+			<directory>environment/develop</directory>
+			<includes>
+				<include>**/*.pem</include>
+			</includes>
+		</fileSet>
+		<fileSet encoding="UTF-8">
+			<directory>environment/develop</directory>
+			<includes>
+				<include>**/*.sql</include>
+			</includes>
+		</fileSet>
+		<!-- # Depaut integration -->
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory>environment/configuration</directory>
+			<includes>
+				<include>**/*.properties</include>
+			</includes>
+		</fileSet>
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory>environment/templates</directory>
+			<includes>
+				<include>**/*.xml</include>
+				<include>**/*.properties</include>
+			</includes>
+		</fileSet>
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory></directory>
+			<includes>
+				<include>*.md</include>
+				<include>*.js</include>
+				<include>jenkinsfile</include>
+			</includes>
+		</fileSet>
+	</fileSets>
 </archetype-descriptor>

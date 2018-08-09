@@ -1,12 +1,9 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
-${symbol_pound}set(${symbol_dollar}corps = ${symbol_dollar}corps.replaceAll("${symbol_escape}n", "<br />"))
+#set($corps = $corps.replaceAll("\n", "<br />"))
 <p>Bonjour,</p>
-<p>L'utilisateur ${symbol_dollar}prenom ${symbol_dollar}nom souhaite vous contacter. 
+<p>L'utilisateur $prenom $nom souhaite vous contacter. 
 Voici le contenu de sa demande :</p>
   <blockquote><i>
-    ${symbol_dollar}corps
+    $corps
   </i></blockquote>
-<p>Envoyé le : ${symbol_dollar}date<br/>
-Par : <a href="${symbol_dollar}applicationUrl">${symbol_dollar}applicationName</a></p>
+<p>Envoyé le : $date<br/>
+Par : <a href="$applicationUrl">$applicationName</a></p>

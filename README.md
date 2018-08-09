@@ -9,11 +9,7 @@ Il s'agit d'un [archétype maven](https://maven.apache.org/archetype/index.html)
 Exécuter la commande Maven suivante pour démarrer l'initialisation d'un nouveau projet basé sur Hornet Service :
 
 ```shell
-$ mvn org.apache.maven.plugins:maven-archetype-plugin:3.0.0:generate -DarchetypeGroupId=fr.gouv.diplomatie.hornet -DarchetypeArtifactId=hornet-service-archetype -DarchetypeVersion=${hornetservicesversion}
-```
-ou suivant votre configuration maven 
-```shell
-$ mvn org.apache.maven.plugins:maven-archetype-plugin:3.0.0:generate -DarchetypeCatalog=PROTOCOL://HOST_REPOSITORY/repository-mvn/archetype-catalog.xml -DarchetypeGroupId=fr.gouv.diplomatie.hornet -DarchetypeArtifactId=hornet-service-archetype -DarchetypeVersion=${hornetservicesversion}
+$ mvn org.apache.maven.plugins:maven-archetype-plugin:3.0.0:generate -DarchetypeCatalog=PROTOCOL://HOST_REPOSITORY/repository-mvn/archetype-catalog.xml -DarchetypeGroupId=fr.gouv.diplomatie.hornet -DarchetypeArtifactId=archetype-hornet-service -DarchetypeVersion=${hornetservicesversion}
 ```
 
 Le générateur va vous demander plusieurs informations nécessaires à l'initialisation de votre projet Hornet Service :
@@ -26,15 +22,24 @@ Le générateur va vous demander plusieurs informations nécessaires à l'initia
 
 __Résultat__ : 
 
-Le générateur produit l'arborescence projet de base suivante, exposant un seul service REST d'envoi de mail :
+Le générateur produit l'arborescence projet de base suivante, exposant un seul service REST d'envoi de mail et de connexion utilisateur :
 
 ```
 .
 ├── environment
 │   ├── configuration
-│   │   └── DEV.properties
+│   │   ├── DEV-DEB8-RELEASE.properties
+│   │   ├── DEV-DEB8-SNAPSHOT.properties
+│   │   ├── DEV-DEB9-RELEASE.properties
+│   │   ├── DEV-DEB9-SNAPSHOT.properties
+│   │   ├── DEVNG-DEB8-RELEASE.properties
+│   │   ├── DEVNG-DEB8-SNAPSHOT.properties
+│   │   ├── DEVNG-DEB9-RELEASE.properties
+│   │   └── DEVNG-DEB9-SNAPSHOT.properties
 │   ├── develop
+│   │   ├── application.properties
 │   │   ├── ehcache.xml
+│   │   ├── hibernate.properties
 │   │   ├── jdbc.properties
 │   │   ├── keys
 │   │   │   ├── private8.txt
@@ -54,96 +59,108 @@ Le générateur produit l'arborescence projet de base suivante, exposant un seul
 │   │   └── context.xml
 │   └── templates
 │       ├── ehcache.xml
+│       ├── hibernate.properties
 │       ├── jdbc.properties
 │       ├── logback-hornet.xml
 │       ├── mail.properties
 │       ├── mailService.properties
 │       ├── token.properties
 │       └── webservices.properties
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── Jenkinsfile
+├── LICENSE.md
 ├── pom.xml
+├── README.md
+├── trigger-rundeck.js
 └── src
     ├── main
     │   ├── java
-    │   │   ├── business
-    │   │   │   ├── bo
-    │   │   │   │   ├── Role.java
-    │   │   │   │   └── Utilisateur.java
-    │   │   │   └── service
-    │   │   │       ├── MailContactServiceImpl.java
-    │   │   │       ├── MailContactService.java
-    │   │   │       ├── RoleServiceImpl.java
-    │   │   │       ├── RoleService.java
-    │   │   │       ├── UtilisateurServiceImpl.java
-    │   │   │       └── UtilisateurService.java
-    │   │   ├── export
-    │   │   │   └── service
-    │   │   │       ├── UtilisateurExportService.java
-    │   │   │       └── UtilisateurPdfExportService.java
-    │   │   ├── integration
-    │   │   │   └── dao
-    │   │   │       ├── RoleDAO.java
-    │   │   │       └── UtilisateurDAO.java
-    │   │   ├── web
-    │   │   │   ├── conf
-    │   │   │   │   └── WebConfig.java
-    │   │   │   ├── controller
-    │   │   │   │   ├── ContactController.java
-    │   │   │   │   └── UtilisateurController.java
-    │   │   │   ├── dto
-    │   │   │   │   ├── contact
-    │   │   │   │   │   └── ContactEnvoyerDTOIn.java
-    │   │   │   │   └── utilisateur
-    │   │   │   │       ├── AuthDTOIn.java
-    │   │   │   │       └── UtilisateurRolesDTO.java
-    │   │   │   ├── filter
-    │   │   │   │   └── SimpleCORSFilter.java
-    │   │   │   ├── interceptors
-    │   │   │   │   └── UserRequestingInterceptor.java
-    │   │   │   ├── listener
-    │   │   │   │   └── ApplicationContextListener.java
-    │   │   │   └── security
-    │   │   │       ├── exceptions
-    │   │   │       │   └── JwtAuthenticationException.java
-    │   │   │       ├── JwtAuthenticationProvider.java
-    │   │   │       ├── JwtService.java
-    │   │   │       ├── KeyProvider.java
-    │   │   │       ├── profile
-    │   │   │       │   ├── JwtAuthenticatedProfile.java
-    │   │   │       │   ├── Role.java
-    │   │   │       │   └── User.java
-    │   │   │       └── WebSecurityConfig.java
-    │   │   └── ws
-    │   │       ├── factory
-    │   │       │   └── WebServiceFactory.java
-    │   │       └── hello
-    │   │           ├── HelloService.java
-    │   │           ├── IHelloService.java
-    │   │           ├── ObjectFactory.java
-    │   │           ├── package-info.java
-    │   │           ├── Say.java
-    │   │           └── SayResponse.java
-    │   ├── resources
-    │   │   ├── createTables.sql
-    │   │   ├── ehcache.xsd
-    │   │   ├── initData.sql
-    │   │   ├── mybatis-config.xml
-    │   │   ├── spring-appContext-aopMetrologie.xml
-    │   │   ├── spring-appContext-common-dao.xml
-    │   │   ├── spring-appContext-common-datasource.xml
-    │   │   ├── spring-appContext-common-service.xml
-    │   │   ├── spring-appContext-common.xml
-    │   │   ├── spring-appContext-mail.xml
-    │   │   ├── spring-appContext-web.xml
-    │   │   └── test
+    │   │   └── src
     │   │       ├── business
-    │   │       │   ├── messages_fr.properties
+    │   │       │   ├── bo
+    │   │       │   │   ├── Role.java
+    │   │       │   │   └── Utilisateur.java
     │   │       │   └── service
-    │   │       │       └── ModeleMailContact.vm
-    │   │       └── integration
-    │   │           └── dao
-    │   │               └── maps
-    │   │                   ├── Role_SqlMap.xml
-    │   │                   └── Utilisateur_SqlMap.xml
+    │   │       │       ├── MailContactServiceImpl.java
+    │   │       │       ├── MailContactService.java
+    │   │       │       ├── UtilisateurServiceImpl.java
+    │   │       │       └── UtilisateurService.java
+    │   │       ├── integration
+    │   │       │   │── conf
+    │   │       │   │   ├── DataSourceConf.java
+    │   │       │   │   └── JpaRepositoryConf.java
+    │   │       │   │── entity
+    │   │       │   │   ├── Role.java
+    │   │       │   │   └── Utilisateur.java
+    │   │       │   └── repository
+    │   │       │       ├── utilisateur
+    │   │       │       │   ├─ UtilisateurProjection.java
+    │   │       │       │   ├─ UtilisateurRepository.java
+    │   │       │       │   └─ UtilisateurSpecification.java
+    │   │       │       └── SpecificationUtils.java
+    │   │       ├── mail
+    │   │       │   │── conf
+    │   │       │   │   ├── HornetMailConf.java
+    │   │       │   │   └── MailConf.java
+    │   │       │   └── service
+    │   │       │       ├── MailContactService.java
+    │   │       │       └── MailContactServiceImlpl.java
+    │   │       ├── web
+    │   │       │   ├── aspect
+    │   │       │   │   ├── ControllerAspect.java
+    │   │       │   │   ├── RepositoryAspect.java
+    │   │       │   │   └── ServiceAspect.java
+    │   │       │   ├── conf
+    │   │       │   │   └── WebConfig.java
+    │   │       │   ├── controller
+    │   │       │   │   ├── ContactController.java
+    │   │       │   │   └── UtilisateurController.java
+    │   │       │   ├── dto
+    │   │       │   │   ├── contact
+    │   │       │   │   │   └── ContactEnvoyerDTOIn.java
+    │   │       │   │   └── utilisateur
+    │   │       │   │       └── AuthDTOIn.java
+    │   │       │   ├── filter
+    │   │       │   │   └── SimpleCORSFilter.java
+    │   │       │   ├── interceptors
+    │   │       │   │   └── UserRequestingInterceptor.java
+    │   │       │   ├── listener
+    │   │       │   │   └── ApplicationContextListener.java
+    │   │       │   └── security
+    │   │       │       ├── exceptions
+    │   │       │       │   └── JwtAuthenticationException.java
+    │   │       │       ├── JwtAuthenticationProvider.java
+    │   │       │       ├── JwtService.java
+    │   │       │       ├── KeyProvider.java
+    │   │       │       ├── profile
+    │   │       │       │   ├── JwtAuthenticatedProfile.java
+    │   │       │       │   ├── Role.java
+    │   │       │       │   └── User.java
+    │   │       │       └── WebSecurityConfig.java
+    │   │       ├── ws
+    │   │       │   ├── conf
+    │   │       │   │   └── WsConf.java
+    │   │       │   ├── factory
+    │   │       │   │   └── WebServiceFactory.java
+    │   │       │   └── hello
+    │   │       │       ├── HelloService.java
+    │   │       │       ├── IHelloService.java
+    │   │       │       ├── ObjectFactory.java
+    │   │       │       ├── package-info.java
+    │   │       │       ├── Say.java
+    │   │       │       └── SayResponse.java
+    │   │       └── Application.java
+    │   ├── resources
+    │   │   ├── ehcache.xsd
+    │   │   ├── spring-appContext-web.xml
+    │   │   ├── bouchonwebservice
+    │   │   │   └── wsdl
+    │   │   │       └── HelloService.wsdl
+    │   │   └── business
+    │   │       ├── messages_fr.properties
+    │   │       └── service
+    │   │           └── ModeleMailContact.vm
     │   └── webapp
     │       ├── META-INF
     │       │   └── MANIFEST.MF
