@@ -76,7 +76,7 @@
 	<parent>
 		<groupId>fr.gouv.diplomatie.hornet</groupId>
 		<artifactId>hornet-service-parent</artifactId>
-		<version>5.4.0</version>
+		<version>5.4.1</version>
 	</parent>
 	
 	<groupId>fr.gouv.diplomatie.hornetTest</groupId>

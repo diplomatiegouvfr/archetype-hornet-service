@@ -1,3 +1,9 @@
+# archetype-hornet-service 5.4.1
+ - EVOL : update version hornet-service
+
+# archetype-hornet-service 5.4.0
+ - EVOL : update version hornet-service
+
 # archetype-hornet-service 5.2.0
  - EVOL : Passage en version 5.2.0
  - EVOL : Changement encodage iso -> utf

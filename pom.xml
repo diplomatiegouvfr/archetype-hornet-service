@@ -5,7 +5,7 @@
 
 	<groupId>fr.gouv.diplomatie.hornet</groupId>
 	<artifactId>archetype-hornet-service</artifactId>
-	<version>5.4.0</version>
+	<version>5.4.1</version>
 	<packaging>maven-archetype</packaging>
 
 	<name>archetype-hornet-service</name>
